@@ -1,0 +1,13 @@
+/** @format */
+
+.App {
+	padding: 2rem;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);
+	min-height: 100vh;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #f8f8f2;
+}
