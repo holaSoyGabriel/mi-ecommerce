@@ -1,62 +1,44 @@
 /** @format */
 
-function ItemListContainer({ mensaje }) {
-	const productos = [
-		{
-			id: 1,
-			nombre: "Camiseta React",
-			precio: 25,
-			imagen: "https://via.placeholder.com/150",
-		},
-		{
-			id: 2,
-			nombre: "Taza JavaScript",
-			precio: 15,
-			imagen: "https://via.placeholder.com/150",
-		},
-		{
-			id: 3,
-			nombre: "Mouse inalámbrico",
-			precio: 30,
-			imagen: "https://via.placeholder.com/150",
-		},
-	];
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ItemList from "./ItemList";
+
+const productos = [
+	{ id: "1", nombre: "GameBoy", precio: 120, categoria: "consolas" },
+	{ id: "2", nombre: "NES", precio: 200, categoria: "consolas" },
+	{ id: "3", nombre: "Sonic CD", precio: 80, categoria: "juegos" },
+	{ id: "4", nombre: "Final Fantasy VI", precio: 150, categoria: "juegos" },
+	{ id: "5", nombre: "Super Nintendo", precio: 180, categoria: "consolas" },
+];
+
+const ItemListContainer = () => {
+	const { idCategoria } = useParams();
+	const [productosFiltrados, setProductosFiltrados] = useState([]);
+
+	useEffect(() => {
+		const promesa = new Promise((resolve) => {
+			setTimeout(() => {
+				const filtrados = idCategoria
+					? productos.filter((p) => p.categoria === idCategoria)
+					: productos;
+				resolve(filtrados);
+			}, 1000);
+		});
+
+		promesa.then((res) => setProductosFiltrados(res));
+	}, [idCategoria]);
 
 	return (
-		<section style={{ padding: "2rem", textAlign: "center" }}>
-			<h3>{mensaje}</h3>
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "center",
-					gap: "1rem",
-					flexWrap: "wrap",
-				}}
-			>
-				{productos.map((item) => (
-					<div
-						key={item.id}
-						style={{
-							border: "1px solid #ccc",
-							borderRadius: "8px",
-							padding: "1rem",
-							width: "200px",
-							background: "#fff",
-						}}
-					>
-						<img
-							src={item.imagen}
-							alt={item.nombre}
-							style={{ width: "100%", borderRadius: "4px" }}
-						/>
-						<h4>{item.nombre}</h4>
-						<p>${item.precio}</p>
-						<button>Agregar al carrito</button>
-					</div>
-				))}
+		<section className="pantalla">
+			<div className="contenedor">
+				<h2 className="neon-text">
+					{idCategoria ? `Categoría: ${idCategoria}` : "Todos los productos"}
+				</h2>
+				<ItemList productos={productosFiltrados} />
 			</div>
 		</section>
 	);
-}
+};
 
 export default ItemListContainer;
