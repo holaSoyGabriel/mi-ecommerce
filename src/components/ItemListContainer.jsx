@@ -10,6 +10,40 @@ const productos = [
 	{ id: "3", nombre: "Sonic CD", precio: 80, categoria: "juegos" },
 	{ id: "4", nombre: "Final Fantasy VI", precio: 150, categoria: "juegos" },
 	{ id: "5", nombre: "Super Nintendo", precio: 180, categoria: "consolas" },
+	{ id: "6", nombre: "Cable AV clásico", precio: 20, categoria: "accesorios" },
+	{
+		id: "7",
+		nombre: "Joystick Retro USB",
+		precio: 45,
+		categoria: "accesorios",
+	},
+	{
+		id: "8",
+		nombre: "Fundita de cartuchos",
+		precio: 15,
+		categoria: "accesorios",
+	},
+	{
+		id: "8",
+		nombre: "Street Fighter II",
+		precio: 110,
+		categoria: "arcade",
+		descripcion: "El clásico de peleas que definió una era",
+	},
+	{
+		id: "9",
+		nombre: "Metal Slug X",
+		precio: 95,
+		categoria: "arcade",
+		descripcion: "Acción frenética en scroll lateral",
+	},
+	{
+		id: "10",
+		nombre: "Dance Dance Revolution Pad",
+		precio: 75,
+		categoria: "arcade",
+		descripcion: "Alfombra original para bailar al ritmo retro",
+	},
 ];
 
 const ItemListContainer = () => {
